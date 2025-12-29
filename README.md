@@ -1,3 +1,78 @@
+# business-consultancy
+
+**Business Consulting Website (Laravel)**
+
+This repository is a small Laravel application that demonstrates a business consultancy website with a public contact form and an admin dashboard that lists contact inquiries.
+
+**Tech Stack:**
+- **PHP 8 / Laravel**
+- **MySQL**
+- **Tailwind CSS / Vite**
+
+**Quick Setup**
+
+- **Clone:**
+
+  git clone <repo-url>
+
+- **Install PHP dependencies:**
+
+  composer install
+
+- **Install JS dependencies:**
+
+  npm install
+
+- **Environment:**
+
+  Copy the environment example and set database credentials:
+
+  cp .env.example .env
+  # then edit .env DB_* values
+
+- **App key:**
+
+  php artisan key:generate
+
+- **Migrate & Seed (adds test contacts):**
+
+  php artisan migrate --seed
+
+- **Build assets (dev):**
+
+  npm run dev
+
+- **Serve (dev):**
+
+  php artisan serve
+
+Visit http://127.0.0.1:8000 and log in (a test user is created by the seeder). The admin dashboard is available at `/dashboard` (protected by `auth`).
+
+**Database & Seeders**
+
+- The `contacts` table migration is at [database/migrations/2025_12_28_134610_create_contacts_table.php](database/migrations/2025_12_28_134610_create_contacts_table.php).
+- Test contacts are added in the main seeder: [database/seeders/DatabaseSeeder.php](database/seeders/DatabaseSeeder.php) — running `php artisan db:seed` inserts sample contact inquiries so the dashboard shows data.
+
+**Key Files**
+
+- Routes: [routes/web.php](routes/web.php)
+- Dashboard controller: [app/Http/Controllers/DashboardController.php](app/Http/Controllers/DashboardController.php)
+- Contact model: [app/Models/Contact.php](app/Models/Contact.php)
+- Dashboard view: [resources/views/dashboard.blade.php](resources/views/dashboard.blade.php)
+- Contact form view: [resources/views/contact.blade.php](resources/views/contact.blade.php)
+
+**Notes / Troubleshooting**
+
+- If the dashboard is empty, ensure migrations and seeders have been run and that your `.env` DB settings are correct.
+- To re-seed test data (will not reset existing data):
+
+  php artisan db:seed
+
+- To reset and re-seed (DESTRUCTIVE):
+
+  php artisan migrate:fresh --seed
+
+If you want, I can add a dedicated `contacts` factory and a small feature test that verifies the dashboard shows seeded contacts.
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
