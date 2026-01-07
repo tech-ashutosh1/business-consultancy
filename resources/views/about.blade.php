@@ -168,6 +168,54 @@
         </div>
     </div>
 
+    {{-- Team Section --}}
+    @if(isset($teamMembers) && $teamMembers->count() > 0)
+    <div class="mb-16">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center justify-center">
+            <span class="w-12 h-1 bg-indigo-600 mr-4"></span>
+            Meet Our Expert Team
+            <span class="w-12 h-1 bg-indigo-600 ml-4"></span>
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($teamMembers as $member)
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition duration-300">
+                    <div class="relative h-64 bg-gray-200">
+                        @if($member->image)
+                            <img src="{{ $member->image }}" alt="{{ $member->name }}" class="w-full h-full object-cover">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center bg-indigo-100 text-indigo-400">
+                                <svg class="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            </div>
+                        @endif
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+                            <h3 class="text-xl font-bold text-white">{{ $member->name }}</h3>
+                            <p class="text-indigo-200 font-medium">{{ $member->position }}</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4 line-clamp-3">{{ $member->bio }}</p>
+                        <div class="flex gap-4">
+                            @if($member->linkedin_url)
+                                <a href="{{ $member->linkedin_url }}" target="_blank" class="text-gray-400 hover:text-blue-600 transition">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            @endif
+                            @if($member->twitter_url)
+                                <a href="{{ $member->twitter_url }}" target="_blank" class="text-gray-400 hover:text-blue-400 transition">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
+
     {{-- Call to Action --}}
     <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-2xl p-8 md:p-12 text-center text-white">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>

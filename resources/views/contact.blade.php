@@ -54,7 +54,7 @@
             {{-- Contact Form --}}
             <div class="lg:col-span-3">
                 <div class="scroll-reveal bg-white rounded-xl shadow-lg p-8">
-                    <form action="/contact" method="POST" class="space-y-6">
+                    <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
                         @csrf
 
                         {{-- Name Field --}}
